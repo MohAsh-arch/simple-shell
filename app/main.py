@@ -11,7 +11,7 @@ def find_executable(cmd):
         if os.path.exists(full) and os.access(full, os.X_OK):
             return full   # STOP here
 
-    return None
+    return f'{cmd}: not found'
 
 
 
