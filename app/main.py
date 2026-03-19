@@ -1,9 +1,22 @@
 import sys
+import os
+
+
+def check_path(cmnd):
+    for p in os.environ["PATH"].split(":"):
+        full = os.path.join(p,cmnd)
+        
+        if os.path.exists(full):
+            print(f'{full}\n')
+
+
 
 def type(string):
     builtin = ['exit' , 'echo' , 'type']
     if string in builtin :
         sys.stdout.write(f'{string} is a shell builtin\n')
+    elif True:
+        check_path(string)
     else:
         sys.stdout.write(f'{string}: not found\n')
 
