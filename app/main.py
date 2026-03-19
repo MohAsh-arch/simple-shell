@@ -2,12 +2,16 @@ import sys
 import os
 
 
-def check_path(cmnd):
+
+
+def find_executable(cmd):
     for p in os.environ["PATH"].split(":"):
-        full = os.path.join(p,cmnd)
-        
-        if os.path.exists(full):
-            sys.stdout.write(f"{cmnd} is {p}\n")
+        full = os.path.join(p, cmd)
+
+        if os.path.exists(full) and os.access(full, os.X_OK):
+            return full   # STOP here
+
+    return None
 
 
 
@@ -16,7 +20,7 @@ def type(string):
     if string in builtin :
         sys.stdout.write(f'{string} is a shell builtin\n')
     elif True:
-        check_path(string)
+        print(find_executable(string))
     else:
         sys.stdout.write(f'{string}: not found\n')
 
