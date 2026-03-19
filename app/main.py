@@ -1,6 +1,6 @@
 import sys
 
-def type(string ->str):
+def type(string):
     builtin = ['exit' , 'echo' , 'type']
     if string in builtin :
         sys.stdout.write(f'{string} is a shell builtin')
