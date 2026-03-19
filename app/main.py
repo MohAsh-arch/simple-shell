@@ -7,7 +7,7 @@ def check_path(cmnd):
         full = os.path.join(p,cmnd)
         
         if os.path.exists(full):
-            print(f'{full}\n')
+            sys.stdout.write(f"{cmnd} is {p}\n")
 
 
 
