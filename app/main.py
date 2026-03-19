@@ -6,10 +6,13 @@ def main():
     while True:
         sys.stdout.write("$ ")
         command = input()
-        if command == 'exit':
-            break
-        else:
-            print(f'{command}: command not found')
+        match command:
+            case 'exit':
+                break
+            case command.startwith('echo ') == True:
+                print(f'\n{command[5:]}')
+            case _:
+                print(f'{command}: command not found')
 
 
 if __name__ == "__main__":
