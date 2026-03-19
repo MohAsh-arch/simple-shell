@@ -9,7 +9,7 @@ def main():
         match command:
             case 'exit':
                 break
-            case command.startwith('echo ') == True:
+            case command if command.startswith('echo ') == True:
                 print(f'\n{command[5:]}')
             case _:
                 print(f'{command}: command not found')
