@@ -1,5 +1,6 @@
 import sys
 import os
+import subprocess
 
 
 
@@ -37,7 +38,15 @@ def main():
             case command if command.startswith('type '):
                 type(command[5:])
             case _:
-                print(f'{command}: command not found')
+                import shlex
+
+                parts = shlex.split(command)
+                exe_path = find_executable(parts[0])
+
+                if exe_path.endswith("not found"):
+                    sys.stdout.write(f'{parts[0]}: command not found')
+                else:
+                    subprocess.run([exe_path, *parts[1:0]])
 
 
 if __name__ == "__main__":
