@@ -44,9 +44,9 @@ def main():
                 exe_path = find_executable(parts[0])
 
                 if exe_path.endswith("not found"):
-                    sys.stdout.write(f'{parts[0]}: command not found')
+                    sys.stdout.write(f'{parts[0]}: command not found\n')
                 else:
-                    subprocess.run([exe_path, *parts[1:]],executable=exe_path)
+                    subprocess.run([parts[0], *parts[1:]],executable=exe_path)
 
 
 if __name__ == "__main__":
